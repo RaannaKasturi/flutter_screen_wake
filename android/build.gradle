@@ -26,10 +26,21 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
+        consumerProguardFiles("consumer-rules.pro")
+    }
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
     }
 }
 dependencies {
+    implementation("androidx.appcompat:appcompat-resources:1.6.1")
     implementation("androidx.appcompat:appcompat:1.6.1")  // Update from previous version
     implementation("com.google.android.material:material:1.11.0")  // Update material library
 }
